@@ -1,4 +1,4 @@
-# download all tiktok video from user
+# download all tiktok video from keyword
 # download all douyin video from user
 # download all kuaishou video from user
 # edit video from entire directory using moviepy
@@ -491,16 +491,16 @@ while True:
             def __init__(self):
 
                 def api1():
-                    url = "https://www.tikwm.com/api/user/posts"
-                    print(Box.DoubleCube(f"""Api: https://www.tikwm.com \nExample: @tiktok"""))
+                    url = "https://www.tikwm.com/api/feed/search"
+                    print(Box.DoubleCube(f"""Api: https://www.tikwm.com \nExample: piala dunia"""))
 
                     KeyError = False
                     while not KeyError:
                         try:
-                            url = "https://www.tikwm.com/api/user/posts"
+                            url = "https://www.tikwm.com/api/feed/search"
 
-                            querystring = {"unique_id":"", "count":"35","cursor":"0"}
-                            querystring["unique_id"] = input(f"{Fore.YELLOW}Enter User:{Fore.WHITE} ")
+                            querystring = {"keywords":"", "count":"35","cursor":"0"}
+                            querystring["keywords"] = input(f"{Fore.YELLOW}Enter Keyword:{Fore.WHITE} ")
 
                             s = requests.Session()
                             gen = s.headers['User-Agent']
@@ -559,21 +559,19 @@ while True:
                     time.sleep(1) 
                     console.log(f"[cyan][Status][/cyan] Successfully downloaded [green]{count}[/green] videos ✓")
 
-                # Download All Video From Tiktok User Function
+                # Download All Video From Keywords
                 def api2():
 
-                    url = "https://tiktok-video-no-watermark2.p.rapidapi.com/user/posts"
-                    print(Box.DoubleCube(f"""Api: https://tiktok-video-no-watermark2.p.rapidapi.com/ \nExample: @tiktok"""))
+                    url = "https://tiktok-video-no-watermark2.p.rapidapi.com/feed/search"
+                    print(Box.DoubleCube(f"""Api: https://tiktok-video-no-watermark2.p.rapidapi.com/ \nExample: mukbang asia"""))
 
                     key = [
-                        "cbb685f815msh9bb9a7c12e7952fp1c55ddjsn1313cb0b6392",
-                        "bc72be337fmshb7473c97adae84ep1ed443jsna2e9de2f00f5",
-                        "ae52c34202mshc9cc27d0dfd4288p178654jsnb7a8a5a2042f"
+                        "b205966881msh1a5568c1ec339efp17407ajsn07f674d30473"
                     ]
                     api_key = random.choice(key)
 
-                    querystring = {"unique_id":"", "count":"35","cursor":"0"}
-                    querystring["unique_id"] = input(f"{Fore.YELLOW}Enter User:{Fore.WHITE} ")
+                    querystring = {"keywords":"", "count":"35","cursor":"0"}
+                    querystring["keywords"] = input(f"{Fore.YELLOW}Enter Keyword:{Fore.WHITE} ")
 
                     headers = {
                         "X-RapidAPI-Key": api_key,
@@ -823,14 +821,14 @@ while True:
             print(Center.XCenter(txt))
             print(f'{Fore.GREEN}')
             print(Box.DoubleCube("Use arrow key to select the options"))
-            questions = [inquirer.List('list', message=f"{Fore.YELLOW}Select Tools{Fore.WHITE}", choices=[' Edit Video', ' Download Douyin Video', ' Download Tiktok Video', ' Download Kuaishou Video'],),]   
+            questions = [inquirer.List('list', message=f"{Fore.YELLOW}Select Tools{Fore.WHITE}", choices=[' Edit Video', ' Download Douyin Video', ' Download Tiktok Video by Keyword', ' Download Kuaishou Video'],),]   
             answers = inquirer.prompt(questions)
 
             if answers['list'] == ' Edit Video':
                 editVideo()
             elif answers['list'] == ' Download Douyin Video':
                 downDouyin()
-            elif answers['list'] == ' Download Tiktok Video':
+            elif answers['list'] == ' Download Tiktok Video by Keyword':
                 dwonTiktok()
             elif answers['list'] == ' Download Kuaishou Video':
                 downKuaishou()
